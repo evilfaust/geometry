@@ -34,8 +34,8 @@
 }
 
 .hero__title {
-  font-size: clamp(2.2rem, 5vw, 4.4rem);
-  max-width: 12ch;
+  font-size: clamp(1.95rem, 4vw, 3.2rem);
+  max-width: 16ch;
 }
 
 .hero__lead,
@@ -415,8 +415,8 @@
   }
 
   .hero__title {
-    max-width: 13ch;
-    font-size: clamp(2rem, 11vw, 3.5rem);
+    max-width: 16ch;
+    font-size: clamp(1.8rem, 8vw, 2.7rem);
   }
 
   .board {
