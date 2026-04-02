@@ -27,15 +27,13 @@
 }
 
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.82fr);
-  gap: 24px;
-  padding: 30px;
+  display: block;
+  padding: 30px 32px;
 }
 
 .hero__title {
   font-size: clamp(1.95rem, 4vw, 3.2rem);
-  max-width: 16ch;
+  max-width: 18ch;
 }
 
 .hero__lead,
@@ -50,7 +48,7 @@
 
 .hero__lead {
   margin: 18px 0 0;
-  max-width: 58ch;
+  max-width: 68ch;
   color: var(--ink-700);
   font-size: 1.04rem;
 }
@@ -66,7 +64,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin: 22px 0 0;
+  margin: 18px 0 0;
   padding: 0;
   list-style: none;
 }
@@ -382,7 +380,6 @@
 }
 
 @media (max-width: 960px) {
-  .hero,
   .viewer,
   .steps__list,
   .steps__header {
