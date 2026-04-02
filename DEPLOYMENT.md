@@ -74,9 +74,11 @@ systemctl reload nginx
 Примеры проверок:
 
 ```bash
-curl -I http://geometry.oipav.ru
-curl -I http://geometry.oipav.ru/egg-presentation/
-curl -I http://geometry.oipav.ru/pentagon-presentation/
+curl -I https://geometry.oipav.ru
+curl -I https://geometry.oipav.ru/triangle-presentation/
+curl -I https://geometry.oipav.ru/hexagon-presentation/
+curl -I https://geometry.oipav.ru/pentagon-presentation/
+curl -I https://geometry.oipav.ru/egg-presentation/
 ```
 
 ## 7. Подключить HTTPS
@@ -94,11 +96,13 @@ certbot --nginx -d geometry.oipav.ru
 При следующем обновлении достаточно:
 
 1. Изменить файлы локально.
-2. Залить проект на сервер через `rsync`.
-3. Если `nginx` не менялся, перезагрузка не нужна.
+2. Проверить сайт локально через `python3 -m http.server 4173`.
+3. Залить проект на сервер через `rsync`.
 4. Если менялась конфигурация `nginx`, выполнить:
 
 ```bash
 nginx -t
 systemctl reload nginx
 ```
+
+Если конфигурация `nginx` не менялась, после `rsync` достаточно проверить, что главная и нужные страницы открываются по `https://geometry.oipav.ru`.
