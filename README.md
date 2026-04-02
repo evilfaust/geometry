@@ -2,8 +2,10 @@
 
 Небольшой статический сайт с интерактивными пошаговыми построениями геометрических фигур для учеников.
 
-Сейчас в проекте есть две страницы:
+Сейчас в проекте есть четыре страницы:
 
+- `triangle-presentation/` - построение правильного треугольника
+- `hexagon-presentation/` - построение правильного шестиугольника
 - `pentagon-presentation/` - построение правильного пятиугольника
 - `egg-presentation/` - построение контура яйца из дуг
 
@@ -18,12 +20,18 @@ geometry/
 ├── presentation.css
 ├── README.md
 ├── DEPLOYMENT.md
-├── nginx/
-│   └── geometry.oipav.ru.conf
 ├── egg-presentation/
 │   ├── index.html
 │   └── script.js
-└── pentagon-presentation/
+├── hexagon-presentation/
+│   ├── index.html
+│   └── script.js
+├── nginx/
+│   └── geometry.oipav.ru.conf
+├── pentagon-presentation/
+│   ├── index.html
+│   └── script.js
+└── triangle-presentation/
     ├── index.html
     └── script.js
 ```

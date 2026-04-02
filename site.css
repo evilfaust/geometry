@@ -377,7 +377,7 @@ h2 {
   }
 }
 
-.landing-support:has(.support-card:only-child) {
+.landing-support--single {
   grid-template-columns: 1fr;
 }
 

@@ -6,7 +6,7 @@
   <title>Geometry | Интерактивные построения</title>
   <meta
     name="description"
-    content="Интерактивные пошаговые построения геометрических фигур для учеников: правильный пятиугольник и контур яйца."
+    content="Интерактивные пошаговые построения геометрических фигур для учеников: треугольник, шестиугольник, пятиугольник и контур яйца."
   >
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,6 +26,8 @@
 
       <nav class="topbar__nav" aria-label="Основная навигация">
         <a class="pill-link is-current" href="./index.html">Главная</a>
+        <a class="pill-link" href="./triangle-presentation/index.html">Треугольник</a>
+        <a class="pill-link" href="./hexagon-presentation/index.html">Шестиугольник</a>
         <a class="pill-link" href="./pentagon-presentation/index.html">Пятиугольник</a>
         <a class="pill-link" href="./egg-presentation/index.html">Яйцо</a>
       </nav>
@@ -36,11 +38,13 @@
         <div>
           <p class="eyebrow">Циркуль, линейка и понятные шаги</p>
           <p class="hero-lead">
-            На сайте собраны два интерактивных построения. Каждый шаг показывает, какие точки, линии,
+            На сайте собраны четыре интерактивных построения. Каждый шаг показывает, какие точки, линии,
             окружности и дуги появляются на чертеже. Это удобно и для урока, и для самостоятельного повторения дома с телефона.
           </p>
 
           <div class="hero-actions">
+            <a class="primary-button" href="./triangle-presentation/index.html">Открыть треугольник</a>
+            <a class="secondary-button" href="./hexagon-presentation/index.html">Открыть шестиугольник</a>
             <a class="primary-button" href="./pentagon-presentation/index.html">Открыть пятиугольник</a>
             <a class="secondary-button" href="./egg-presentation/index.html">Открыть построение яйца</a>
           </div>
@@ -48,6 +52,44 @@
       </section>
 
       <section class="landing-grid">
+        <a class="path-card surface" href="./triangle-presentation/index.html">
+          <div class="path-card__top">
+            <div class="path-card__icon">3</div>
+            <div class="path-card__meta">6 шагов</div>
+          </div>
+          <div>
+            <p class="eyebrow">Через одну вершину</p>
+            <h2 class="path-card__title">Правильный треугольник</h2>
+          </div>
+          <p class="path-card__text">
+            Построение правильного треугольника на окружности через равномерную разметку точек циркулем.
+          </p>
+          <div class="path-card__tags" aria-label="Особенности построения треугольника">
+            <span class="path-card__tag">6 шагов</span>
+            <span class="path-card__tag">Окружность и дуги</span>
+            <span class="path-card__tag">Вершины через одну</span>
+          </div>
+        </a>
+
+        <a class="path-card surface" href="./hexagon-presentation/index.html">
+          <div class="path-card__top">
+            <div class="path-card__icon">6</div>
+            <div class="path-card__meta">6 шагов</div>
+          </div>
+          <div>
+            <p class="eyebrow">Радиус и сторона</p>
+            <h2 class="path-card__title">Правильный шестиугольник</h2>
+          </div>
+          <p class="path-card__text">
+            Пошаговое построение шестиугольника, у которого сторона равна радиусу описанной окружности.
+          </p>
+          <div class="path-card__tags" aria-label="Особенности построения шестиугольника">
+            <span class="path-card__tag">6 шагов</span>
+            <span class="path-card__tag">Одинаковый раствор циркуля</span>
+            <span class="path-card__tag">Все вершины на окружности</span>
+          </div>
+        </a>
+
         <a class="path-card surface" href="./pentagon-presentation/index.html">
           <div class="path-card__top">
             <div class="path-card__icon">5</div>
@@ -86,7 +128,7 @@
         </a>
       </section>
 
-      <section class="landing-support">
+      <section class="landing-support landing-support--single">
         <article class="support-card surface">
           <p class="eyebrow">Как пользоваться</p>
           <h2>Листать можно по шагам</h2>
