@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Построение яйца по GeoGebra</title>
+  <meta
+    name="description"
+    content="Пошаговое интерактивное построение контура яйца из дуг, окружностей и направляющих."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Literata:opsz,wght@7..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../site.css">
+  <link rel="stylesheet" href="../presentation.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="../index.html" aria-label="Главная страница Geometry">
+        <span class="brand__mark">G</span>
+        <span class="brand__text">
+          <span class="brand__title">Geometry</span>
+          <span class="brand__subtitle">Интерактивные геометрические построения</span>
+        </span>
+      </a>
+
+      <nav class="topbar__nav" aria-label="Навигация по сайту">
+        <a class="pill-link" href="../index.html">Главная</a>
+        <a class="pill-link" href="../pentagon-presentation/index.html">Пятиугольник</a>
+        <a class="pill-link is-current" href="./index.html">Яйцо</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="hero">
+        <div class="hero__copy">
+          <p class="eyebrow">Циркуль и линейка · построение дуг</p>
+          <h1 class="hero__title">Построение яйца по шагам</h1>
+        <p class="hero__lead">
+          Листай шаги вперед и назад и смотри, как из окружностей, прямых и точек
+          пересечения появляется тот самый контур яйца, как на чертеже из GeoGebra.
+        </p>
+        <div class="hero__actions">
+          <button class="ghost-button" id="start-button" type="button">Начать с шага 1</button>
+          <a class="text-link" href="#viewer">К чертежу</a>
+          <a class="text-link" href="#steps">Все шаги</a>
+        </div>
+          <ul class="hero__chips" aria-label="Ключевые особенности">
+            <li>14 шагов</li>
+            <li>4 дуги в финальном контуре</li>
+            <li>Подходит для телефона</li>
+          </ul>
+        </div>
+
+        <aside class="hero__note hero__aside">
+          <div>
+            <h2>Что строим</h2>
+            <p>
+              Здесь используется схема из файла GeoGebra: контур собирается из
+              <strong>четырех дуг</strong> с центрами в <strong>A</strong>, <strong>D</strong>,
+              <strong>E</strong> и <strong>B</strong>.
+            </p>
+          </div>
+          <div class="hero__stat">
+            <strong>Как пользоваться</strong>
+            <p>Сначала открой чертеж, потом листай шаги кнопками рядом с ним или выбери нужный этап в списке ниже.</p>
+          </div>
+          <div class="hero__stat">
+            <strong>Что важно не пропустить</strong>
+            <p>Вспомогательные окружности и направляющие не исчезают: они помогают понять, откуда берутся точки F и G.</p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="viewer" id="viewer">
+        <div class="viewer__board">
+          <div class="board-header">
+            <p class="board-header__step" id="step-counter"></p>
+            <div class="progress">
+              <div class="progress__bar" id="progress-bar"></div>
+            </div>
+          </div>
+          <div class="board" id="diagram" aria-live="polite"></div>
+        </div>
+
+        <div class="viewer__panel">
+          <article class="step-card">
+            <p class="step-card__part" id="step-part"></p>
+            <div class="step-card__meta">
+              <span class="step-chip" id="step-chip">Шаг 1</span>
+            </div>
+            <h2 id="step-title"></h2>
+            <p id="step-description"></p>
+            <p class="step-card__hint" id="step-note"></p>
+          </article>
+
+          <div class="controls">
+            <button class="nav-button" id="prev-button" type="button">← Назад</button>
+            <button class="nav-button nav-button--primary" id="next-button" type="button">Вперед →</button>
+          </div>
+
+          <p class="keyboard-tip">Можно листать клавишами ← и →, а на телефоне просто нажимать большие кнопки.</p>
+        </div>
+      </section>
+
+      <section class="steps" id="steps">
+        <div class="steps__header">
+          <div>
+            <p class="eyebrow">Инструкция</p>
+            <h2>Шаги построения</h2>
+          </div>
+          <p class="section-copy">Если ученик потерялся, можно открыть любой этап напрямую из списка.</p>
+        </div>
+        <ol class="steps__list" id="steps-list"></ol>
+      </section>
+    </main>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Построение правильного пятиугольника</title>
+  <meta
+    name="description"
+    content="Пошаговое интерактивное построение правильного пятиугольника с окружностями и ключевыми точками."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Literata:opsz,wght@7..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../site.css">
+  <link rel="stylesheet" href="../presentation.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="../index.html" aria-label="Главная страница Geometry">
+        <span class="brand__mark">G</span>
+        <span class="brand__text">
+          <span class="brand__title">Geometry</span>
+          <span class="brand__subtitle">Интерактивные геометрические построения</span>
+        </span>
+      </a>
+
+      <nav class="topbar__nav" aria-label="Навигация по сайту">
+        <a class="pill-link" href="../index.html">Главная</a>
+        <a class="pill-link is-current" href="./index.html">Пятиугольник</a>
+        <a class="pill-link" href="../egg-presentation/index.html">Яйцо</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="hero">
+        <div class="hero__copy">
+          <p class="eyebrow">Циркуль и линейка · 7 класс</p>
+          <h1 class="hero__title">Построение правильного пятиугольника по шагам</h1>
+        <p class="hero__lead">
+          Нажимай вперед и назад, чтобы увидеть, как появляется каждая линия, окружность и вершина.
+          Чертеж справа обновляется на каждом шаге.
+        </p>
+        <div class="hero__actions">
+          <button class="ghost-button" id="start-button" type="button">Начать с шага 1</button>
+          <a class="text-link" href="#viewer">К чертежу</a>
+          <a class="text-link" href="#steps">Все шаги</a>
+        </div>
+          <ul class="hero__chips" aria-label="Ключевые особенности">
+            <li>16 шагов</li>
+            <li>Вписанная фигура</li>
+            <li>Бонус: пентаграмма</li>
+          </ul>
+        </div>
+
+        <aside class="hero__note hero__aside">
+          <div>
+            <h2>Важно</h2>
+            <p>
+              В интерактиве используется рабочая школьная версия построения:
+              <strong>D</strong> берется как середина отрезка <strong>AB</strong>.
+              Иначе на ключевом шаге не получится длина стороны пятиугольника.
+            </p>
+          </div>
+          <div class="hero__stat">
+            <strong>Что увидит ученик</strong>
+            <p>Сначала строится опорная окружность, потом появляется длина стороны, а после этого по окружности откладываются вершины.</p>
+          </div>
+          <div class="hero__stat">
+            <strong>Как лучше объяснять</strong>
+            <p>Удобно комментировать шаги в логике «почему эта точка важна», а не только «что нужно провести дальше».</p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="viewer" id="viewer">
+        <div class="viewer__board">
+          <div class="board-header">
+            <p class="board-header__step" id="step-counter"></p>
+            <div class="progress">
+              <div class="progress__bar" id="progress-bar"></div>
+            </div>
+          </div>
+          <div class="board" id="diagram" aria-live="polite"></div>
+        </div>
+
+        <div class="viewer__panel">
+          <article class="step-card">
+            <p class="step-card__part" id="step-part"></p>
+            <div class="step-card__meta">
+              <span class="step-chip" id="step-chip">Шаг 1</span>
+            </div>
+            <h2 id="step-title"></h2>
+            <p id="step-description"></p>
+            <p class="step-card__hint" id="step-note"></p>
+          </article>
+
+          <div class="controls">
+            <button class="nav-button" id="prev-button" type="button">← Назад</button>
+            <button class="nav-button nav-button--primary" id="next-button" type="button">Вперед →</button>
+          </div>
+
+          <p class="keyboard-tip">Можно листать клавишами ← и →, а на телефоне нажимать кнопки рядом с пояснением.</p>
+        </div>
+      </section>
+
+      <section class="steps" id="steps">
+        <div class="steps__header">
+          <div>
+            <p class="eyebrow">Все этапы</p>
+            <h2>Схема построения</h2>
+          </div>
+          <p class="section-copy">Каждый этап можно открыть отдельно, если нужно быстро вернуться к поиску нужной вершины или окружности.</p>
+        </div>
+        <ol class="steps__list" id="steps-list"></ol>
+      </section>
+    </main>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
