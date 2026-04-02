@@ -234,6 +234,10 @@ h2 {
   pointer-events: none;
 }
 
+.landing-hero--simple {
+  display: block;
+}
+
 .hero-title {
   max-width: 11ch;
   font-size: clamp(2.7rem, 6vw, 5.4rem);
@@ -371,6 +375,10 @@ h2 {
   .landing-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.landing-support:has(.support-card:only-child) {
+  grid-template-columns: 1fr;
 }
 
 @media (max-width: 760px) {

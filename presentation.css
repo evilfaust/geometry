@@ -158,8 +158,12 @@
 .viewer {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.85fr);
+  grid-template-areas:
+    "board panel"
+    "board controls";
   gap: 24px;
   padding: 22px;
+  align-items: start;
 }
 
 .viewer__board,
@@ -170,6 +174,7 @@
 }
 
 .viewer__board {
+  grid-area: board;
   padding: 18px;
 }
 
@@ -218,9 +223,15 @@
 }
 
 .viewer__panel {
+  grid-area: panel;
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.viewer__controls {
+  grid-area: controls;
+  display: flex;
 }
 
 .step-card {
@@ -438,6 +449,11 @@
   }
 
   .viewer {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "board"
+      "controls"
+      "panel";
     gap: 18px;
   }
 
@@ -456,6 +472,10 @@
 
   .step-card {
     padding: 18px;
+  }
+
+  .viewer__panel {
+    gap: 12px;
   }
 
   .step-card__meta {
@@ -534,6 +554,10 @@
   .nav-button {
     width: 100%;
     justify-content: center;
+  }
+
+  .viewer__controls {
+    gap: 10px;
   }
 
   .text-link {
