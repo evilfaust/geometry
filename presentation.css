@@ -394,8 +394,8 @@
 @media (max-width: 760px) {
   .page-shell {
     width: min(100% - 20px, 1200px);
-    padding-top: 12px;
-    padding-bottom: 28px;
+    padding-top: 10px;
+    padding-bottom: 22px;
   }
 
   .hero,
@@ -416,22 +416,161 @@
     font-size: clamp(1.8rem, 8vw, 2.7rem);
   }
 
+  .hero__lead {
+    max-width: none;
+    font-size: 0.98rem;
+    line-height: 1.58;
+  }
+
+  .hero__actions {
+    margin-top: 20px;
+    gap: 10px;
+  }
+
+  .hero__chips {
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .hero__chips li {
+    font-size: 0.82rem;
+    padding: 7px 10px;
+  }
+
+  .viewer {
+    gap: 18px;
+  }
+
+  .viewer__board {
+    padding: 14px;
+  }
+
+  .board-header {
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
   .board {
     aspect-ratio: 1 / 1;
+  }
+
+  .step-card {
+    padding: 18px;
+  }
+
+  .step-card__meta {
+    margin-bottom: 12px;
+  }
+
+  .steps {
+    padding: 20px 18px;
+  }
+
+  .steps__header {
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .steps__header p {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .steps__list {
+    gap: 10px;
+  }
+
+  .steps__list li {
+    padding: 16px 16px 14px;
+    border-radius: 18px;
+  }
+
+  .steps__number {
+    min-width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+    font-size: 0.82rem;
   }
 }
 
 @media (max-width: 520px) {
+  .hero {
+    padding: 16px;
+  }
+
   .step-card h2 {
-    font-size: 1.5rem;
+    font-size: 1.36rem;
   }
 
   .viewer {
-    gap: 16px;
+    gap: 14px;
   }
 
   .viewer__board,
   .step-card {
     border-radius: 20px;
+  }
+
+  .viewer__board {
+    padding: 12px;
+  }
+
+  .board-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .board-header__step {
+    min-width: 0;
+    font-size: 0.94rem;
+  }
+
+  .progress {
+    width: 100%;
+  }
+
+  .ghost-button,
+  .text-link,
+  .nav-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .text-link {
+    min-height: 44px;
+    padding: 10px 14px;
+  }
+
+  .step-card {
+    padding: 16px;
+  }
+
+  .step-card__hint {
+    margin-top: 14px;
+    padding: 12px 14px;
+    min-height: 0;
+    font-size: 0.94rem;
+  }
+
+  .keyboard-tip {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .steps {
+    padding: 18px 16px;
+  }
+
+  .steps__header h2 {
+    font-size: 1.6rem;
+  }
+
+  .steps__list li strong {
+    font-size: 0.98rem;
+  }
+
+  .steps__list li p {
+    font-size: 0.92rem;
+    line-height: 1.52;
   }
 }
