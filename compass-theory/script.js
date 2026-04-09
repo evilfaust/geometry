@@ -40,8 +40,6 @@ const state = {
   stepIndex: 0,
 };
 
-const sqrt3 = Math.sqrt(3);
-
 function toScreen(point) {
   return {
     x: board.origin.x + point.x * board.scale,
@@ -53,20 +51,44 @@ function distance(pointA, pointB) {
   return Math.hypot(pointB.x - pointA.x, pointB.y - pointA.y);
 }
 
+function normalizeAngle(angle) {
+  let value = angle;
+  while (value <= -Math.PI) value += Math.PI * 2;
+  while (value > Math.PI) value -= Math.PI * 2;
+  return value;
+}
+
 function arcPath(center, radius, startAngle, endAngle) {
-  const start = toScreen({
-    x: center.x + radius * Math.cos(startAngle),
-    y: center.y + radius * Math.sin(startAngle),
+  const delta = normalizeAngle(endAngle - startAngle);
+  const segments = 24;
+  const points = Array.from({ length: segments + 1 }, (_, index) => {
+    const angle = startAngle + (delta * index) / segments;
+    return toScreen({
+      x: center.x + radius * Math.cos(angle),
+      y: center.y + radius * Math.sin(angle),
+    });
   });
-  const end = toScreen({
-    x: center.x + radius * Math.cos(endAngle),
-    y: center.y + radius * Math.sin(endAngle),
-  });
-  const delta = ((endAngle - startAngle) % (Math.PI * 2) + Math.PI * 2) % (Math.PI * 2);
-  const largeArc = delta > Math.PI ? 1 : 0;
-  const sweep = endAngle > startAngle ? 0 : 1;
-  const radiusPx = radius * board.scale;
-  return `M ${start.x} ${start.y} A ${radiusPx} ${radiusPx} 0 ${largeArc} ${sweep} ${end.x} ${end.y}`;
+
+  return points
+    .map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`)
+    .join(" ");
+}
+
+function intersectCircles(centerA, radiusA, centerB, radiusB) {
+  const dx = centerB.x - centerA.x;
+  const dy = centerB.y - centerA.y;
+  const distanceCenters = Math.hypot(dx, dy);
+  const a = (radiusA ** 2 - radiusB ** 2 + distanceCenters ** 2) / (2 * distanceCenters);
+  const h = Math.sqrt(Math.max(radiusA ** 2 - a ** 2, 0));
+  const xm = centerA.x + (a * dx) / distanceCenters;
+  const ym = centerA.y + (a * dy) / distanceCenters;
+  const rx = (-dy * h) / distanceCenters;
+  const ry = (dx * h) / distanceCenters;
+
+  return [
+    { x: xm + rx, y: ym + ry },
+    { x: xm - rx, y: ym - ry },
+  ];
 }
 
 function makeSvg(title, layers, labels) {
@@ -255,12 +277,12 @@ const constructions = [
       ];
 
       if (stepIndex >= 1) {
-        layers.push(drawArc(this.points.K, radius, angle, 0));
+        layers.push(drawArc(this.points.K, radius, 0, angle));
         labels.push(drawPoint("P", P, "key", 12, 24));
         labels.push(drawPoint("Q", Q, "key", -22, -10));
       }
       if (stepIndex >= 2) {
-        layers.push(drawArc(this.points.A, radius, angle, 0, "arc-main"));
+        layers.push(drawArc(this.points.A, radius, 0, angle, "arc-main"));
         layers.push(drawCircle(C, chord, "circle-soft"));
         labels.push(drawPoint("C", C, "key", 12, 24));
         labels.push(drawPoint("E", E, stepIndex >= 3 ? "final" : "key", 12, -10));
@@ -285,7 +307,6 @@ const constructions = [
       O: { x: -0.3, y: -0.15 },
       A: { x: -1.45, y: -0.15 },
       B: { x: 0.9, y: 0.95 },
-      R: { x: 0.15, y: 0.86 },
     },
     steps: [
       {
@@ -317,7 +338,11 @@ const constructions = [
         x: this.points.O.x + Math.cos(angle) * radius,
         y: this.points.O.y + Math.sin(angle) * radius,
       };
-      const auxRadius = distance(P, this.points.R);
+      const auxRadius = 1;
+      const [topPoint] = intersectCircles(P, auxRadius, Q, auxRadius)
+        .sort((pointA, pointB) => pointB.y - pointA.y);
+      const angleFromPToR = Math.atan2(topPoint.y - P.y, topPoint.x - P.x);
+      const angleFromQToR = Math.atan2(topPoint.y - Q.y, topPoint.x - Q.x);
       const layers = [
         drawSegment(this.points.O, this.points.A, "line-main"),
         drawSegment(this.points.O, this.points.B, "line-main"),
@@ -327,17 +352,17 @@ const constructions = [
       ];
 
       if (stepIndex >= 1) {
-        layers.push(drawArc(this.points.O, radius, angle, Math.PI));
+        layers.push(drawArc(this.points.O, radius, Math.PI, angle));
         labels.push(drawPoint("P", P, "key", -22, 24));
         labels.push(drawPoint("Q", Q, "key", 12, -10));
       }
       if (stepIndex >= 2) {
-        layers.push(drawCircle(P, auxRadius, "circle-main"));
-        layers.push(drawCircle(Q, auxRadius, "circle-main"));
-        labels.push(drawPoint("R", this.points.R, stepIndex >= 3 ? "final" : "key", 12, -10));
+        layers.push(drawArc(P, auxRadius, angleFromPToR - 0.8, angleFromPToR + 0.28));
+        layers.push(drawArc(Q, auxRadius, angleFromQToR - 0.2, angleFromQToR + 0.85));
+        labels.push(drawPoint("R", topPoint, stepIndex >= 3 ? "final" : "key", 12, -10));
       }
       if (stepIndex >= 3) {
-        layers.push(drawSegment(this.points.O, this.points.R, "line-final"));
+        layers.push(drawSegment(this.points.O, topPoint, "line-final"));
       }
 
       return makeSvg(this.steps[stepIndex].title, layers, labels);
