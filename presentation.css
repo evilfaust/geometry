@@ -79,6 +79,104 @@
   font-weight: 700;
 }
 
+.topic-switcher {
+  display: grid;
+  gap: 16px;
+  padding: 24px 26px;
+}
+
+.topic-switcher__header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.topic-switcher__header p {
+  margin: 0;
+  color: var(--ink-700);
+  max-width: 60ch;
+  line-height: 1.65;
+}
+
+.topic-switcher__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.topic-switcher__button {
+  display: grid;
+  gap: 8px;
+  padding: 16px 18px;
+  border: 1px solid rgba(210, 195, 165, 0.82);
+  border-radius: 22px;
+  background: rgba(255, 250, 241, 0.9);
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.topic-switcher__button:hover,
+.topic-switcher__button:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(189, 93, 56, 0.48);
+}
+
+.topic-switcher__button.is-active {
+  border-color: rgba(189, 93, 56, 0.7);
+  box-shadow: 0 14px 32px rgba(189, 93, 56, 0.12);
+  background: rgba(255, 248, 240, 0.96);
+}
+
+.topic-switcher__button strong {
+  font-size: 1rem;
+}
+
+.topic-switcher__button span {
+  color: var(--ink-700);
+  line-height: 1.55;
+}
+
+.topic-summary {
+  display: grid;
+  gap: 18px;
+  padding: 26px;
+}
+
+.topic-summary__lead {
+  margin: 0;
+  color: var(--ink-700);
+  line-height: 1.7;
+  max-width: 70ch;
+}
+
+.topic-summary__cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.topic-summary__card {
+  padding: 20px;
+  border-radius: 22px;
+  background: rgba(255, 250, 241, 0.9);
+  border: 1px solid rgba(210, 195, 165, 0.76);
+}
+
+.topic-summary__card h3 {
+  margin: 0 0 10px;
+  font-family: "Literata", serif;
+  font-size: 1.2rem;
+}
+
+.topic-summary__card p {
+  margin: 0;
+  color: var(--ink-700);
+  line-height: 1.65;
+}
+
 .ghost-button,
 .nav-button {
   border: none;
@@ -393,7 +491,8 @@
 @media (max-width: 960px) {
   .viewer,
   .steps__list,
-  .steps__header {
+  .steps__header,
+  .topic-summary__cards {
     grid-template-columns: 1fr;
   }
 
@@ -410,6 +509,8 @@
   }
 
   .hero,
+  .topic-switcher,
+  .topic-summary,
   .viewer,
   .steps {
     border-radius: 22px;
@@ -484,6 +585,15 @@
 
   .steps {
     padding: 20px 18px;
+  }
+
+  .topic-switcher,
+  .topic-summary {
+    padding: 20px 18px;
+  }
+
+  .topic-switcher__header {
+    display: grid;
   }
 
   .steps__header {

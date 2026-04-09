@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Теория построений циркулем и линейкой</title>
+  <meta
+    name="description"
+    content="Интерактивная теория по построениям циркулем и линейкой: равный отрезок, равный угол, биссектриса, перпендикуляр и серединный перпендикуляр."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Literata:opsz,wght@7..72,600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="stylesheet" href="/site.css">
+  <link rel="stylesheet" href="/presentation.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Главная страница Geometry">
+        <span class="brand__mark">
+          <img src="/logo.png" alt="Логотип Geometry">
+        </span>
+        <span class="brand__text">
+          <span class="brand__title">Geometry</span>
+          <span class="brand__subtitle">Интерактивные геометрические построения</span>
+        </span>
+      </a>
+
+      <nav class="topbar__nav" aria-label="Навигация по сайту">
+        <a class="pill-link" href="/">Главная</a>
+        <a class="pill-link is-current" href="/compass-theory/">Теория</a>
+        <a class="pill-link" href="/triangle-elements/">Треугольник по элементам</a>
+        <a class="pill-link" href="/triangle-presentation/">Треугольник</a>
+        <a class="pill-link" href="/hexagon-presentation/">Шестиугольник</a>
+        <a class="pill-link" href="/pentagon-presentation/">Пятиугольник</a>
+        <a class="pill-link" href="/egg-presentation/">Яйцо</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="hero">
+        <div class="hero__copy">
+          <p class="eyebrow">Учебник · задачи на построение</p>
+          <h1 class="hero__title">Теория построений циркулем и линейкой</h1>
+          <p class="hero__lead">
+            В этой теме собраны базовые построения, которые обычно идут первыми: отложить отрезок на луче,
+            построить угол, равный данному, провести биссектрису, перпендикуляр через точку и серединный
+            перпендикуляр к отрезку. Формулировки и логика шагов ориентированы на текст учебника.
+          </p>
+          <div class="hero__actions">
+            <button class="ghost-button" id="start-button" type="button">Открыть первую модель</button>
+            <a class="text-link" href="#models">Выбрать построение</a>
+            <a class="text-link" href="#viewer">К чертежу</a>
+          </div>
+          <ul class="hero__chips" aria-label="Ключевые особенности">
+            <li>5 интерактивных моделей</li>
+            <li>Пошаговые объяснения</li>
+            <li>Циркуль и линейка</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="topic-switcher hero" id="models">
+        <div class="topic-switcher__header">
+          <div>
+            <p class="eyebrow">Выбор модели</p>
+            <h2>Базовые построения</h2>
+          </div>
+          <p>Переключай построение, а затем листай его шаги. Для каждой задачи есть своя отдельная интерактивная схема.</p>
+        </div>
+        <div class="topic-switcher__list" id="construction-list"></div>
+      </section>
+
+      <section class="viewer" id="viewer">
+        <div class="viewer__board">
+          <div class="board-header">
+            <p class="board-header__step" id="step-counter"></p>
+            <div class="progress">
+              <div class="progress__bar" id="progress-bar"></div>
+            </div>
+          </div>
+          <div class="board" id="diagram" aria-live="polite"></div>
+        </div>
+
+        <div class="controls viewer__controls">
+          <button class="nav-button" id="prev-button" type="button">← Назад</button>
+          <button class="nav-button nav-button--primary" id="next-button" type="button">Вперед →</button>
+        </div>
+
+        <div class="viewer__panel">
+          <article class="step-card">
+            <p class="step-card__part" id="construction-name"></p>
+            <div class="step-card__meta">
+              <span class="step-chip" id="step-chip">Шаг 1</span>
+            </div>
+            <h2 id="step-title"></h2>
+            <p id="step-description"></p>
+            <p class="step-card__hint" id="step-note"></p>
+          </article>
+
+          <p class="keyboard-tip">Клавиши ← и → листают шаги, а выбор модели находится над чертежом.</p>
+        </div>
+      </section>
+
+      <section class="topic-summary hero">
+        <div>
+          <p class="eyebrow">Смысл построения</p>
+          <h2 id="summary-title">Что важно заметить</h2>
+        </div>
+        <p class="topic-summary__lead" id="summary-lead"></p>
+        <div class="topic-summary__cards">
+          <article class="topic-summary__card">
+            <h3>Идея</h3>
+            <p id="summary-idea"></p>
+          </article>
+          <article class="topic-summary__card">
+            <h3>Почему работает</h3>
+            <p id="summary-proof"></p>
+          </article>
+          <article class="topic-summary__card">
+            <h3>Где пригодится</h3>
+            <p id="summary-use"></p>
+          </article>
+        </div>
+      </section>
+
+      <section class="steps" id="steps">
+        <div class="steps__header">
+          <div>
+            <p class="eyebrow">Инструкция</p>
+            <h2>Шаги текущего построения</h2>
+          </div>
+          <p class="section-copy" id="steps-copy"></p>
+        </div>
+        <ol class="steps__list" id="steps-list"></ol>
+      </section>
+    </main>
+  </div>
+
+  <script src="/compass-theory/script.js"></script>
+</body>
+</html>
